@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="/save">
+        <h1>Them mon hoc</h1>
+        <input type="text" name="name_course" placeholder="Ten mon hoc"/> <br>
+        <input type="text" name="course_type" placeholder="Loai mon hoc"/> <br>
+        <input type="text" name="semester" placeholder="Hoc ky"/> <br>
+        <input type="text" name="department" placeholder="Khoa"/> <br>
+        <button type="submit">Them</button>
+    </form>
+    <form method="post" action="/update">
+        <h1>Cập nhật môn học</h1>
+        <input type="text" name="id" placeholder="ID môn học cần cập nhật" /> <br>
+        <!-- Các trường thông tin mới của môn học -->
+        <input type="text" name="name_course" placeholder="Tên môn học mới" /> <br>
+        <input type="text" name="course_type" placeholder="Loại môn học mới" /> <br>
+        <input type="text" name="semester" placeholder="Học kỳ mới" /> <br>
+        <input type="text" name="department" placeholder="Khoa mới" /> <br>
+        <button type="submit">Cập nhật</button>
+    </form>    
+    <form method="post" action="/delete">
+        <h1>Xoa mon hoc</h1>
+        <button type="submit" id="deleteButton">Xóa</button>
+        <div class="content">
+            <table>
+                <caption>Danh sach mon hoc</caption>
+                <thead>
+                    <th>iD</th>
+                    <th>Ten mon hoc</th>
+                    <th>Loai mon hoc</th>
+                    <th>Hoc ky</th>
+                    <th>Khoa</th>     
+                    <th>Chon</th>           
+                </thead>
+                <tbody>
+                    <% data.forEach(item => { %>
+                        <tr>
+                            <td><%= item.id %></td>
+                            <td><%= item.name_course %></td>
+                            <td><%= item.course_type %></td>
+                            <td><%= item.semester %></td>
+                            <td><%= item.department %></td>
+                            <td>
+                                <input type="checkbox" name="selectedCourses" value="<%= item.id %>">
+                            </td>
+                        </tr>   
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </form>
+
+</body>
+</html>

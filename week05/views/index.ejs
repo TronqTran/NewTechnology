@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="content">
+
+        <form action="/delete" method="post">
+            <table border="1">
+                <caption>
+                    Danh sach san pham
+                </caption>
+                <thead>
+                    <tr>
+                        <th>Ma san pham</th>
+                        <th>Ten san pham</th>
+                        <th>Hinh anh</th>
+                        <th>Chon</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% for (let i = 0; i < data.length; i++){%>
+
+                        <tr>
+                            <th>
+                                <%=data[i].MaSP%>
+                            </th>
+                            <th>
+                                <%=data[i].tenSP%>
+                            </th>
+                            <th>
+                                <img src="<%=data[i].image%>" alt="image" width="45px" height="45px"/>
+                            </th>
+                            <th>
+                                <input type="checkbox" name="<%=data[i].MaSP %>" id="<%=data[i].MaSP %>"  />
+                            </th>
+                        </tr>
+                        <%};%>
+                </tbody>
+            </table>
+            <button>Delete</button>
+        </form>
+    </div>
+    <div>
+        <form action="/save" method="post" enctype="multipart/form-data">
+            <input name="id" type="text" placeholder="enter id" />
+            <input name="nameSP" type="text" placeholder="enter name" />
+            <input type="file" name="image" id="" accept="image/*">
+            <button>Save</button>
+        </form>
+    </div>
+   
+</body>
+
+</html>
